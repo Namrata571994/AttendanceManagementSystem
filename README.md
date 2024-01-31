@@ -5,4 +5,4 @@ SpringBoot
 JPA
 REST
 H2 Database
-**Note :** Use POSTMAN for get,create,delete operations
+**Note :** Use POSTMAN for get,create and delete operations
