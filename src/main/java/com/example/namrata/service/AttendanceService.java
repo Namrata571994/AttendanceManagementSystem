@@ -12,10 +12,10 @@ import com.example.namrata.repository.AttendanceRepository;
 
 @Service
 public class AttendanceService {
-
+	@Autowired
 private AttendanceRepository attendanceRepository;
 
-@Autowired
+
 public AttendanceService(AttendanceRepository attendanceRepository) {
 this.attendanceRepository = attendanceRepository;
 }
@@ -53,5 +53,13 @@ throw new AttendanceNotFoundException("Attendance not found with id: " + id);
 }
 }
 
+public Attendance updateAttendance(Long id) {
+	// TODO Auto-generated method stub
+	Attendance attendance= attendanceRepository.findById(id).get();
+	attendance.setEmployeeId("100000");
+	attendanceRepository.save(attendance);
+	return attendance;
+ 
+}
 }
 
