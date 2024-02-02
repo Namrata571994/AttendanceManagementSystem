@@ -4,6 +4,7 @@ import com.example.namrata.model.Attendance;
 import com.example.namrata.service.AttendanceService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,11 +31,21 @@ return attendanceService.getAttendanceById(id);
 }
 
 @PostMapping
-public Attendance saveAttendance(@RequestBody Attendance attendance) {
-return attendanceService.saveAttendance(attendance);
+//@ResponseStatus(code=HttpStatus.CREATED)
+public ResponseEntity<String> createAttendance(@RequestBody Attendance attendance) {
+	attendanceService.saveAttendance(attendance);
+return ResponseEntity.status(HttpStatus.CREATED).body("FYI- Attendance Inserted Sucessfully");
+		
+}
+
+@PutMapping("/update/{id}")
+public Attendance updateAttendance(@PathVariable Long id) {
+	return attendanceService.updateAttendance(id);
+	
 }
 
 @DeleteMapping
+@ResponseStatus(code=HttpStatus.NO_CONTENT)
 public void deleteAttendance() {
 attendanceService.deleteAllAttendance();
 

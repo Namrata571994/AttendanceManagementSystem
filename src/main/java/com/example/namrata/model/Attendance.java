@@ -1,10 +1,13 @@
 package com.example.namrata.model;
 
 import java.util.Date;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 //import lombok.AllArgsConstructor;
 //import lombok.Data;
 //import lombok.NoArgsConstructor;
@@ -13,16 +16,18 @@ import jakarta.persistence.Id;
 //@NoArgsConstructor
 //@AllArgsConstructor
 //@Data
+@Table(name="Attendance")
 public class Attendance {
 
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
+@Column(name="ID")
 private Long id;
-
+@Column(name="EMP_ID")
 private String employeeId;
-
+@Column(name="DATE")
 private Date date;
-
+@Column(name="IS_EMP_PRESENT")
 private boolean present;
 
 // Constructors, getters and setters
